@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buscador de Películas</title>
+</head>
+
+<body>
+  <h1>🎬 Buscador de Películas</h1>
+
+  <!-- Paso 1: campo de texto y botones -->
+  <div class="buscador">
+    <label for="inputBuscar" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;">Buscar película por título</label>
+    <input type="text" id="inputBuscar" placeholder="Escribe el nombre de una película..." autocomplete="off" aria-label="Buscar película" />
+    <button id="btnBuscar" aria-label="Buscar película">Buscar</button>
+    <button id="btnPopulares" aria-label="Ver películas populares">Ver populares</button>
+  </div>
+
+  <!-- Espacio para mensajes (cargando, errores, no encontrada) -->
+  <p id="mensaje" aria-live="polite" role="status"></p>
+
+  <!-- Espacio vacío donde se mostrarán los resultados -->
+  <div id="resultados" aria-live="polite"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

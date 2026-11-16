@@ -1,0 +1,379 @@
+/* ==========================================================================
+   Variables y configuración global
+   ========================================================================== */
+:root {
+  --bg-color: #0f1014;
+  --surface-color: #171920;
+  --surface-hover: #20232c;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(229, 9, 20, 0.45);
+
+  --primary-color: #e50914;
+  --primary-hover: #f40612;
+  --secondary-color: #242732;
+  --secondary-hover: #303442;
+  --secondary-border: rgba(255, 255, 255, 0.12);
+
+  --text-primary: #ffffff;
+  --text-secondary: #a0a6b5;
+  --text-muted: #6b7280;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.65);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 36px 24px 64px;
+  max-width: 1320px;
+  margin-inline: auto;
+  min-height: 100vh;
+  text-align: center;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   Encabezado
+   ========================================================================== */
+h1 {
+  font-size: 2.35rem;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  margin: 0 0 24px 0;
+  color: var(--text-primary);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* ==========================================================================
+   Buscador y controles
+   ========================================================================== */
+.buscador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0 auto 24px auto;
+  max-width: 720px;
+  width: 100%;
+}
+
+input#inputBuscar {
+  flex: 1 1 320px;
+  padding: 13px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--surface-color);
+  color: var(--text-primary);
+  font-size: 15px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+input#inputBuscar::placeholder {
+  color: var(--text-muted);
+}
+
+input#inputBuscar:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: #1c1e27;
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.25);
+}
+
+input#inputBuscar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #13141a;
+}
+
+/* ==========================================================================
+   Botones
+   ========================================================================== */
+button {
+  padding: 13px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+/* Botón Principal (Buscar) */
+#btnBuscar {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.35);
+}
+
+#btnBuscar:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  box-shadow: 0 6px 18px rgba(229, 9, 20, 0.5);
+  transform: translateY(-1px);
+}
+
+#btnBuscar:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Botón Secundario (Ver Populares) */
+#btnPopulares {
+  background-color: var(--secondary-color);
+  color: #e2e8f0;
+  border-color: var(--secondary-border);
+}
+
+#btnPopulares:hover:not(:disabled) {
+  background-color: var(--secondary-hover);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+#btnPopulares:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Estado Disabled para botones */
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+  filter: grayscale(0.2);
+}
+
+/* ==========================================================================
+   Área de Mensajes (Estados de Interfaz)
+   ========================================================================== */
+#mensaje {
+  min-height: 24px;
+  margin: 12px auto 28px auto;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  max-width: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+#mensaje:empty {
+  display: none;
+}
+
+#mensaje:not(:empty) {
+  padding: 12px 22px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  color: #e2e8f0;
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Contenedor de Resultados (Grid)
+   ========================================================================== */
+#resultados {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 24px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   Tarjetas de Películas
+   ========================================================================== */
+.tarjeta {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
+  box-shadow: var(--shadow-sm);
+  will-change: transform;
+}
+
+.tarjeta:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(229, 9, 20, 0.35);
+}
+
+/* Póster con proporción 2:3 uniforme */
+.tarjeta img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
+  background-color: #121317;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Título con límite de 2 líneas y reserva uniforme de altura */
+.tarjeta h3 {
+  margin: 14px 14px 6px 14px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.7em;
+}
+
+/* Año como badge estilizado */
+.tarjeta .anio {
+  margin: 0 14px 10px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.07);
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  width: fit-content;
+  letter-spacing: 0.3px;
+}
+
+/* Sinopsis con altura y truncamiento controlado a 4 líneas */
+.tarjeta .sinopsis {
+  margin: 0 14px 16px 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+/* ==========================================================================
+   Diseño Responsive
+   ========================================================================== */
+
+/* Tablet (hasta 992px) */
+@media (max-width: 992px) {
+  body {
+    padding: 28px 20px 48px;
+  }
+
+  h1 {
+    font-size: 2.05rem;
+  }
+
+  #resultados {
+    grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+    gap: 18px;
+  }
+}
+
+/* Móvil y pantallas medianas (hasta 640px) */
+@media (max-width: 640px) {
+  body {
+    padding: 20px 14px 44px;
+  }
+
+  h1 {
+    font-size: 1.65rem;
+    margin-bottom: 18px;
+  }
+
+  .buscador {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  input#inputBuscar {
+    width: 100%;
+    flex: none;
+  }
+
+  .buscador button {
+    width: 100%;
+  }
+
+  #resultados {
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+    gap: 14px;
+  }
+
+  .tarjeta {
+    border-radius: var(--radius-md);
+  }
+
+  .tarjeta h3 {
+    font-size: 14px;
+    margin: 10px 10px 4px 10px;
+    min-height: 2.7em;
+  }
+
+  .tarjeta .anio {
+    font-size: 11px;
+    margin: 0 10px 8px 10px;
+  }
+
+  .tarjeta .sinopsis {
+    font-size: 12px;
+    line-height: 1.4;
+    -webkit-line-clamp: 3;
+    margin: 0 10px 12px 10px;
+  }
+}
+
+/* Móviles muy compactos (hasta 340px) */
+@media (max-width: 340px) {
+  #resultados {
+    grid-template-columns: 1fr;
+  }
+}
